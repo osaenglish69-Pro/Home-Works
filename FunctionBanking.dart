@@ -15,49 +15,62 @@ main(){
         showBalance();
         break;
       case 2:
-        print("Enter the number to deposite : ");
-        String? input2 = stdin.readLineSync();
-       double op = double.parse(input2!);
-       Deposite(op);
+       Deposite();
        break;
       case 3:
-        print("Enter the number to withdraw : ");
-        String? input2 = stdin.readLineSync();
-        double op = double.parse(input2!);
-        withdraw(op);
+        withdraw();
         break;
         default:
           print("");
     }
   }
 }
-Deposite(double value){
-
+Deposite(){
+  print("="*30);
+  print("Enter the number to deposite : ");
+  String? input2 = stdin.readLineSync();
+  double value=  double.parse(input2!);
   if(value > 1) {
     balance = balance + value;
+    print("the operation is executed successfully ");
+    print("="*30);
   }
   else{
     print("Failed to deposite !!!");
+    print("="*30);
   }
 }
-withdraw(double value){
-
-
-  if(value >= 1 && times <= 3 && sum < 120000) {
+withdraw(){
+  print("="*30);
+  print("Enter the number to withdraw : ");
+  String? input2 = stdin.readLineSync();
+  double value=  double.parse(input2!);
+  if(sum >= 120000){
+    print("you have already reached the max limit : 120000 ");
+    print("="*30);
+  }
+  else if(times > 3){
+    print("you have already reached : 3 times");
+    print("="*30);
+  }
+ else if(value >= 1 && times <= 3 && sum < 120000) {
     sum = sum + value;
     balance = balance - value;
-    print(times);
-    print(sum);
+    print("times : ${times}");
+    print("today withdraw is   : ${sum}");
+    print("="*30);
       times++;
-
 
   }
   else{
     print("Failed to withdraw !!!");
+    print("="*30);
   }
 
 }
 
 showBalance(){
+  print("="*30);
   print("The Balance : ${balance}");
+  print("="*30);
 }
